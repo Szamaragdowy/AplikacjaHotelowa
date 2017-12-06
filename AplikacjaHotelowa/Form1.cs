@@ -55,30 +55,64 @@ namespace AplikacjaHotelowa
             Adresy AdresKursor = Current_Cursor_Address();
             Form_Ustaw form2 = new Form_Ustaw(0, AdresKursor);
             form2.SetDesktopLocation(this.Location.X + this.Size.Width, this.Location.Y);
+ 
             var result = form2.ShowDialog();
             if (result == DialogResult.OK)
             {
                 Adresy adres = form2.ReturnValue;
 
-                DataClasses1DataContext dc = new DataClasses1DataContext(con);
-                dc.Adresies.InsertOnSubmit(adres);
-
-                
-                try
+                if (cb_linq.Checked)
                 {
-                    dc.SubmitChanges();
-                }
-                catch (Exception exception)
-                {
-                    MessageBox.Show("Dodawania zostało anulowane proszę spróbować jeszcze raz. \n\n\n" + "\"" + exception.Message + "\"");
-                }
-                var selectQuery =
-                  from a in dc.GetTable<Adresy>()
-                  select a;
-                dataGridView1.DataSource = selectQuery;
+                    Insert_Adres_Linq(adres);
 
-                dataGridView1.CurrentCell = dataGridView1[0, dataGridView1.RowCount - 1];
+                }else if (cb_procedura.Checked)
+                {
+                    Insert_Adres_Procedure(adres);
+                }
             }
+        }
+
+        private void Insert_Adres_Procedure(Adresy adres)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext(con);
+            dc.Adresies.InsertOnSubmit(adres);
+
+            try
+            {
+                dc.InsertAdres(adres.Miasto, adres.Ulica, adres.NumerBudynku, adres.Województwo, adres.Kraj);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("Dodawania zostało anulowane proszę spróbować jeszcze raz. \n\n\n" + "\"" + exception.Message + "\"");
+            }
+
+            var selectQuery =
+              from a in dc.GetTable<Adresy>()
+              select a;
+            dataGridView1.DataSource = selectQuery;
+
+            dataGridView1.CurrentCell = dataGridView1[0, dataGridView1.RowCount - 1];
+        }
+
+        private void Insert_Adres_Linq(Adresy adres)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext(con);
+            dc.Adresies.InsertOnSubmit(adres);
+
+            try
+            {
+                dc.SubmitChanges();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("Dodawania zostało anulowane proszę spróbować jeszcze raz. \n\n\n" + "\"" + exception.Message + "\"");
+            }
+            var selectQuery =
+              from a in dc.GetTable<Adresy>()
+              select a;
+            dataGridView1.DataSource = selectQuery;
+
+            dataGridView1.CurrentCell = dataGridView1[0, dataGridView1.RowCount - 1];
         }
 
         private void UpdateButton_Click_1(object sender, EventArgs e)
@@ -96,15 +130,14 @@ namespace AplikacjaHotelowa
 
                 Adresy adresee = dc.Adresies.FirstOrDefault(adr => adr.Id.Equals(Adres_Kursor.Id));
 
-                Adresy save = new Adresy(adresee);
+                Adresy save = new Adresy();
+                save.Id = adresee.Id;
+                save.Ulica = adresee.Ulica;
+                save.NumerBudynku = adresee.NumerBudynku;
+                save.Województwo = adresee.Województwo;
+                save.Kraj = adresee.Kraj;
 
                 Adresy returnedAdres = form2.ReturnValue;
-
-                /* adresee.Miasto =        returnedAdres.Miasto == "" ? null      : returnedAdres.Miasto;
-                 adresee.Ulica =         returnedAdres.Ulica == "" ? null       : returnedAdres.Ulica;
-                 adresee.NumerBudynku =  returnedAdres.NumerBudynku== "" ? null : returnedAdres.NumerBudynku;
-                 adresee.Województwo =   returnedAdres.Województwo == "" ? null : returnedAdres.Województwo;
-                 adresee.Kraj =          returnedAdres.Kraj == "" ? null        :  returnedAdres.Kraj;*/
 
                 adresee.Miasto = returnedAdres.Miasto;
                 adresee.Ulica = returnedAdres.Ulica;
@@ -135,6 +168,16 @@ namespace AplikacjaHotelowa
             dataGridView1.CurrentCell = dataGridView1[saveColumn, saveRow];
         }
 
+        private void Update_Adres_Procedure(Adresy adres)
+        {
+
+        }
+
+        private void Update_Adres_Linq(Adresy adres)
+        {
+
+        }
+
         private void DeleteButton_Click_1(object sender, EventArgs e)
         {
             Adresy Adres_Kursor = Current_Cursor_Address();
@@ -145,20 +188,42 @@ namespace AplikacjaHotelowa
             var result = form2.ShowDialog();
             if (result == DialogResult.OK)
             {
-                DataClasses1DataContext dc = new DataClasses1DataContext(con);
-
-                Adresy Deleteadresee = dc.Adresies.FirstOrDefault(adr => adr.Id.Equals(Adres_Kursor.Id));
-
-                dc.Adresies.DeleteOnSubmit(Deleteadresee);
-
-                dc.SubmitChanges();
-
-                var selectQuery =
-                  from a in dc.GetTable<Adresy>()
-                  select a;
-                dataGridView1.DataSource = selectQuery;
+                if (cb_linq.Checked)
+                {
+                    Delete_Adres_Linq(Adres_Kursor.Id);
+                }
+                else if (cb_procedura.Checked)
+                {
+                    Delete_Adres_Procedure(Adres_Kursor.Id);
+                }  
             }
             if(saveRow>1)dataGridView1.CurrentCell = dataGridView1[saveColumn, saveRow-1];
+        }
+
+        private void Delete_Adres_Procedure(int id)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext(con);
+            dc.DeleteAdres(id);
+
+            var selectQuery =
+             from a in dc.GetTable<Adresy>()
+             select a;
+            dataGridView1.DataSource = selectQuery;
+        }
+
+        private void Delete_Adres_Linq(int id)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext(con);
+            Adresy Deleteadresee = dc.Adresies.FirstOrDefault(adr => adr.Id.Equals(id));
+
+            dc.Adresies.DeleteOnSubmit(Deleteadresee);
+
+            dc.SubmitChanges();
+
+            var selectQuery =
+              from a in dc.GetTable<Adresy>()
+              select a;
+            dataGridView1.DataSource = selectQuery;
         }
     }
 }

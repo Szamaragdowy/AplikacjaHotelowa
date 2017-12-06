@@ -160,6 +160,27 @@ namespace AplikacjaHotelowa
 				return this.GetTable<UdogodnieniaLista>();
 			}
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertAdres")]
+		public int InsertAdres([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Miasto", DbType="VarChar(50)")] string miasto, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Ulica", DbType="VarChar(50)")] string ulica, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="NumerBudynku", DbType="VarChar(50)")] string numerBudynku, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Wojewodztwo", DbType="VarChar(50)")] string wojewodztwo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Kraj", DbType="VarChar(50)")] string kraj)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), miasto, ulica, numerBudynku, wojewodztwo, kraj);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UpdateAdres")]
+		public int UpdateAdres([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Id", DbType="Int")] System.Nullable<int> id, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Miasto", DbType="VarChar(50)")] string miasto, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Ulica", DbType="VarChar(50)")] string ulica, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="NumerBudynku", DbType="VarChar(50)")] string numerBudynku, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Wojewodztwo", DbType="VarChar(50)")] string wojewodztwo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Kraj", DbType="VarChar(50)")] string kraj)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id, miasto, ulica, numerBudynku, wojewodztwo, kraj);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.DeleteAdres")]
+		public int DeleteAdres([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="Int")] System.Nullable<int> iD)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD);
+			return ((int)(result.ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Adresy")]
@@ -205,21 +226,8 @@ namespace AplikacjaHotelowa
 			this._Budynkis = new EntitySet<Budynki>(new Action<Budynki>(this.attach_Budynkis), new Action<Budynki>(this.detach_Budynkis));
 			OnCreated();
 		}
-
-        public Adresy(Adresy Nowy)
-        {
-            this._Budynkis = new EntitySet<Budynki>(new Action<Budynki>(this.attach_Budynkis), new Action<Budynki>(this.detach_Budynkis));
-            OnCreated();
-            _Id = Nowy.Id;
-            _Miasto = Nowy. Miasto;
-            _Ulica = Nowy.Ulica;
-            _NumerBudynku = Nowy.NumerBudynku;
-            _Województwo = Nowy.Województwo;
-            _Kraj = Nowy.Kraj;
-        }
-
-
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int Id
 		{
 			get

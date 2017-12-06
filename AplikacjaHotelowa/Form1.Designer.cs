@@ -35,8 +35,8 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.Linq = new System.Windows.Forms.RadioButton();
+            this.cb_procedura = new System.Windows.Forms.RadioButton();
+            this.cb_linq = new System.Windows.Forms.RadioButton();
             this.InsertButton = new System.Windows.Forms.Button();
             this.DeleteButton = new System.Windows.Forms.Button();
             this.UpdateButton = new System.Windows.Forms.Button();
@@ -82,8 +82,8 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.radioButton2);
-            this.groupBox2.Controls.Add(this.Linq);
+            this.groupBox2.Controls.Add(this.cb_procedura);
+            this.groupBox2.Controls.Add(this.cb_linq);
             this.groupBox2.Location = new System.Drawing.Point(668, 6);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(122, 68);
@@ -91,27 +91,27 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Ustawienia";
             // 
-            // radioButton2
+            // cb_procedura
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(7, 41);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(73, 17);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.Text = "Procedury";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.cb_procedura.AutoSize = true;
+            this.cb_procedura.Location = new System.Drawing.Point(7, 41);
+            this.cb_procedura.Name = "cb_procedura";
+            this.cb_procedura.Size = new System.Drawing.Size(73, 17);
+            this.cb_procedura.TabIndex = 1;
+            this.cb_procedura.Text = "Procedury";
+            this.cb_procedura.UseVisualStyleBackColor = true;
             // 
-            // Linq
+            // cb_linq
             // 
-            this.Linq.AutoSize = true;
-            this.Linq.Checked = true;
-            this.Linq.Location = new System.Drawing.Point(6, 18);
-            this.Linq.Name = "Linq";
-            this.Linq.Size = new System.Drawing.Size(45, 17);
-            this.Linq.TabIndex = 0;
-            this.Linq.TabStop = true;
-            this.Linq.Text = "Linq";
-            this.Linq.UseVisualStyleBackColor = true;
+            this.cb_linq.AutoSize = true;
+            this.cb_linq.Checked = true;
+            this.cb_linq.Location = new System.Drawing.Point(6, 18);
+            this.cb_linq.Name = "cb_linq";
+            this.cb_linq.Size = new System.Drawing.Size(45, 17);
+            this.cb_linq.TabIndex = 0;
+            this.cb_linq.TabStop = true;
+            this.cb_linq.Text = "Linq";
+            this.cb_linq.UseVisualStyleBackColor = true;
             // 
             // InsertButton
             // 
@@ -275,8 +275,8 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton Linq;
+        private System.Windows.Forms.RadioButton cb_procedura;
+        private System.Windows.Forms.RadioButton cb_linq;
         private System.Windows.Forms.Button InsertButton;
         private System.Windows.Forms.Button DeleteButton;
         private System.Windows.Forms.Button UpdateButton;

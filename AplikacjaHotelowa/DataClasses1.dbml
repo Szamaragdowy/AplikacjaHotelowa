@@ -94,4 +94,25 @@
       <Association Name="Udogodnienia_UdogodnieniaLista" Member="Udogodnienia" ThisKey="UdogodnieniaId" OtherKey="Id" Type="Udogodnienia" IsForeignKey="true" />
     </Type>
   </Table>
+  <Function Name="dbo.InsertAdres" Method="InsertAdres">
+    <Parameter Name="Miasto" Parameter="miasto" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Ulica" Parameter="ulica" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="NumerBudynku" Parameter="numerBudynku" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Wojewodztwo" Parameter="wojewodztwo" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Kraj" Parameter="kraj" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.UpdateAdres" Method="UpdateAdres">
+    <Parameter Name="Id" Parameter="id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Miasto" Parameter="miasto" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Ulica" Parameter="ulica" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="NumerBudynku" Parameter="numerBudynku" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Wojewodztwo" Parameter="wojewodztwo" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Kraj" Parameter="kraj" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.DeleteAdres" Method="DeleteAdres">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
 </Database>
