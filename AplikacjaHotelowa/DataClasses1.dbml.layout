@@ -119,5 +119,17 @@
         <classShapeMoniker Id="214bce1d-5f6d-4c98-953c-90f45ffe39ad" />
       </nodes>
     </associationConnector>
+    <classShape Id="b6e83e32-196e-46fd-a8cd-d17f765e5367" absoluteBounds="6.625, 1.375, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/DataClasses1DataContext/liczba_budynkow_w_miastach" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4b860b75-9aaa-4dd7-b808-1fe5cd4f32b7" absoluteBounds="6.64, 1.835, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="bb5f157f-848a-4506-baf4-34b9eb499496" absoluteBounds="5.625, 3.5, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/DataClasses1DataContext/liczba_budynkow_w_wojewodztwach" />
+      <nestedChildShapes>
+        <elementListCompartment Id="85169e81-c342-4157-bbcf-12cfd9753213" absoluteBounds="5.64, 3.96, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

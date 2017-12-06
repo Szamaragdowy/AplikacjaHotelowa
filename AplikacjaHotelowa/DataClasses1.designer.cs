@@ -161,6 +161,22 @@ namespace AplikacjaHotelowa
 			}
 		}
 		
+		public System.Data.Linq.Table<liczba_budynkow_w_miastach> liczba_budynkow_w_miastaches
+		{
+			get
+			{
+				return this.GetTable<liczba_budynkow_w_miastach>();
+			}
+		}
+		
+		public System.Data.Linq.Table<liczba_budynkow_w_wojewodztwach> liczba_budynkow_w_wojewodztwaches
+		{
+			get
+			{
+				return this.GetTable<liczba_budynkow_w_wojewodztwach>();
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertAdres")]
 		public int InsertAdres([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Miasto", DbType="VarChar(50)")] string miasto, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Ulica", DbType="VarChar(50)")] string ulica, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="NumerBudynku", DbType="VarChar(50)")] string numerBudynku, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Wojewodztwo", DbType="VarChar(50)")] string wojewodztwo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Kraj", DbType="VarChar(50)")] string kraj)
 		{
@@ -2102,6 +2118,96 @@ namespace AplikacjaHotelowa
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.liczba_budynkow_w_miastach")]
+	public partial class liczba_budynkow_w_miastach
+	{
+		
+		private string _Miasto;
+		
+		private System.Nullable<int> _LiczbaBudynków;
+		
+		public liczba_budynkow_w_miastach()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Miasto", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string Miasto
+		{
+			get
+			{
+				return this._Miasto;
+			}
+			set
+			{
+				if ((this._Miasto != value))
+				{
+					this._Miasto = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LiczbaBudynków", DbType="Int")]
+		public System.Nullable<int> LiczbaBudynków
+		{
+			get
+			{
+				return this._LiczbaBudynków;
+			}
+			set
+			{
+				if ((this._LiczbaBudynków != value))
+				{
+					this._LiczbaBudynków = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.liczba_budynkow_w_wojewodztwach")]
+	public partial class liczba_budynkow_w_wojewodztwach
+	{
+		
+		private string _Województwo;
+		
+		private System.Nullable<int> _LiczbaBudynków;
+		
+		public liczba_budynkow_w_wojewodztwach()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Województwo", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string Województwo
+		{
+			get
+			{
+				return this._Województwo;
+			}
+			set
+			{
+				if ((this._Województwo != value))
+				{
+					this._Województwo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LiczbaBudynków", DbType="Int")]
+		public System.Nullable<int> LiczbaBudynków
+		{
+			get
+			{
+				return this._LiczbaBudynków;
+			}
+			set
+			{
+				if ((this._LiczbaBudynków != value))
+				{
+					this._LiczbaBudynków = value;
+				}
 			}
 		}
 	}

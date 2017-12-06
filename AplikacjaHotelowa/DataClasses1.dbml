@@ -94,6 +94,18 @@
       <Association Name="Udogodnienia_UdogodnieniaLista" Member="Udogodnienia" ThisKey="UdogodnieniaId" OtherKey="Id" Type="Udogodnienia" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.liczba_budynkow_w_miastach" Member="liczba_budynkow_w_miastaches">
+    <Type Name="liczba_budynkow_w_miastach">
+      <Column Name="Miasto" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="LiczbaBudynków" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.liczba_budynkow_w_wojewodztwach" Member="liczba_budynkow_w_wojewodztwaches">
+    <Type Name="liczba_budynkow_w_wojewodztwach">
+      <Column Name="Województwo" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="LiczbaBudynków" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.InsertAdres" Method="InsertAdres">
     <Parameter Name="Miasto" Parameter="miasto" Type="System.String" DbType="VarChar(50)" />
     <Parameter Name="Ulica" Parameter="ulica" Type="System.String" DbType="VarChar(50)" />

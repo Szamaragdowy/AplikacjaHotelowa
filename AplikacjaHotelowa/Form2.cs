@@ -66,6 +66,7 @@ namespace AplikacjaHotelowa
         private void end()
         {
             Adresy New = new Adresy();
+            if(this.Text != "Dodaj" )New.Id = Int32.Parse(t_ID.Text);
             New.Miasto = t_Miasto.Text;
             New.NumerBudynku = t_NumerBudynku.Text;
             New.Ulica = t_Ulica.Text;
