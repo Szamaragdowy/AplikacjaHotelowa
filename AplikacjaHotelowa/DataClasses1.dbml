@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="AplikacjaHotelowa" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-4B2QABT;Initial Catalog=AplikacjaHotelowa;Integrated Security=True" SettingsObjectName="AplikacjaHotelowa.Properties.Settings" SettingsPropertyName="AplikacjaHotelowaConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Adresy" Member="Adresies">
+    <Type Name="Adresy">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Miasto" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Ulica" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="NumerBudynku" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Województwo" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Kraj" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Association Name="Adresy_Budynki" Member="Budynkis" ThisKey="Id" OtherKey="Adresy_Id" Type="Budynki" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Apartamenty" Member="Apartamenties">
+    <Type Name="Apartamenty">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="BudynkiId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TypId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NumerPokoju" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Cena" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Association Name="Apartamenty_Rezerwacja" Member="Rezerwacjas" ThisKey="Id" OtherKey="ApartamentyId" Type="Rezerwacja" />
+      <Association Name="Apartamenty_UdogodnieniaLista" Member="UdogodnieniaListas" ThisKey="Id" OtherKey="ApartamentyId" Type="UdogodnieniaLista" />
+      <Association Name="Budynki_Apartamenty" Member="Budynki" ThisKey="BudynkiId" OtherKey="Id" Type="Budynki" IsForeignKey="true" />
+      <Association Name="Typ_Apartamenty" Member="Typ" ThisKey="TypId" OtherKey="Id" Type="Typ" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Budynki" Member="Budynkis">
+    <Type Name="Budynki">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nazwa" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="TelMenadzer" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TelRecepcja" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Opis" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Adresy_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Budynki_Apartamenty" Member="Apartamenties" ThisKey="Id" OtherKey="BudynkiId" Type="Apartamenty" />
+      <Association Name="Adresy_Budynki" Member="Adresy" ThisKey="Adresy_Id" OtherKey="Id" Type="Adresy" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Osoby" Member="Osobies">
+    <Type Name="Osoby">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Imie" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Nazwisko" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="DataUrodzenia" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Tel" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Association Name="Osoby_Rezerwacja" Member="Rezerwacjas" ThisKey="Id" OtherKey="OsobyId" Type="Rezerwacja" />
+      <Association Name="Osoby_StatusZameldowania" Member="StatusZameldowanias" ThisKey="Id" OtherKey="OsobyId" Type="StatusZameldowania" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Rezerwacja" Member="Rezerwacjas">
+    <Type Name="Rezerwacja">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="StatusZameldowaniaId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ApartamentyId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OsobyId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StatusRezerwacji" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="TerminPrzybycia" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="TerminOdjazdu" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="Apartamenty_Rezerwacja" Member="Apartamenty" ThisKey="ApartamentyId" OtherKey="Id" Type="Apartamenty" IsForeignKey="true" />
+      <Association Name="Osoby_Rezerwacja" Member="Osoby" ThisKey="OsobyId" OtherKey="Id" Type="Osoby" IsForeignKey="true" />
+      <Association Name="StatusZameldowania_Rezerwacja" Member="StatusZameldowania" ThisKey="StatusZameldowaniaId" OtherKey="Id" Type="StatusZameldowania" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.StatusZameldowania" Member="StatusZameldowanias">
+    <Type Name="StatusZameldowania">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="opis" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="OsobyId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="StatusZameldowania_Rezerwacja" Member="Rezerwacjas" ThisKey="Id" OtherKey="StatusZameldowaniaId" Type="Rezerwacja" />
+      <Association Name="Osoby_StatusZameldowania" Member="Osoby" ThisKey="OsobyId" OtherKey="Id" Type="Osoby" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Typ" Member="Typs">
+    <Type Name="Typ">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nazwa" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Opis" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="Typ_Apartamenty" Member="Apartamenties" ThisKey="Id" OtherKey="TypId" Type="Apartamenty" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Udogodnienia" Member="Udogodnienias">
+    <Type Name="Udogodnienia">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nazwa" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="opis" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="Udogodnienia_UdogodnieniaLista" Member="UdogodnieniaListas" ThisKey="Id" OtherKey="UdogodnieniaId" Type="UdogodnieniaLista" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UdogodnieniaLista" Member="UdogodnieniaListas">
+    <Type Name="UdogodnieniaLista">
+      <Column Name="UdogodnieniaId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ApartamentyId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="Apartamenty_UdogodnieniaLista" Member="Apartamenty" ThisKey="ApartamentyId" OtherKey="Id" Type="Apartamenty" IsForeignKey="true" />
+      <Association Name="Udogodnienia_UdogodnieniaLista" Member="Udogodnienia" ThisKey="UdogodnieniaId" OtherKey="Id" Type="Udogodnienia" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
