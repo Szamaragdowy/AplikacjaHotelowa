@@ -16,9 +16,7 @@ namespace AplikacjaHotelowa
         {
             InitializeComponent();
             dataGridView1.DataSource = data;
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-
-           
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;           
         }
 
         private void Form3_Load(object sender, EventArgs e)

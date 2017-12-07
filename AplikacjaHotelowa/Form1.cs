@@ -81,6 +81,11 @@ namespace AplikacjaHotelowa
             {
                 dc.InsertAdres(adres.Miasto, adres.Ulica, adres.NumerBudynku, adres.Województwo, adres.Kraj);
             }
+            catch (SqlException sqlexception)
+            {
+                MessageBox.Show("Dodawanie zostało anulowane. \n\n\n" + "\"" + sqlexception.Message + "\""
+                    + "\n Class: " + sqlexception.Class + "\n State: " + sqlexception.State + "\n Number: " + sqlexception.Number);
+            }
             catch (Exception exception)
             {
                 MessageBox.Show("Dodawania zostało anulowane.\n\n\n" + "\"" + exception.Message + "\"");
@@ -100,6 +105,11 @@ namespace AplikacjaHotelowa
             try
             {
                 dc.SubmitChanges();
+            }
+            catch (SqlException sqlexception)
+            {
+                MessageBox.Show("Dodawanie zostało anulowane. \n\n\n" + "\"" + sqlexception.Message + "\""
+                    + "\n Class: " + sqlexception.Class + "\n State: " + sqlexception.State + "\n Number: " + sqlexception.Number);
             }
             catch (Exception exception)
             {
@@ -144,6 +154,11 @@ namespace AplikacjaHotelowa
             {
                 dc.UpdateAdres(adres.Id, adres.Miasto, adres.Ulica, adres.NumerBudynku, adres.Województwo, adres.Kraj);
             }
+            catch (SqlException sqlexception)
+            {
+                MessageBox.Show("Usuwanie zostało anulowane. \n\n\n" + "\"" + sqlexception.Message + "\""
+                    + "\n Class: " + sqlexception.Class + "\n State: " + sqlexception.State + "\n Number: " + sqlexception.Number);
+            }
             catch (Exception exception)
             {
                 MessageBox.Show("Zmienianie zostało anulowane proszę spróbować jeszcze raz. \n\n\n" + "\"" + exception.Message + "\"");
@@ -177,6 +192,16 @@ namespace AplikacjaHotelowa
             try
             {
                 dc.SubmitChanges();
+            }
+            catch (SqlException sqlexception)
+            {
+                adresee.Miasto = save.Miasto;
+                adresee.Ulica = save.Ulica;
+                adresee.NumerBudynku = save.NumerBudynku;
+                adresee.Województwo = save.Województwo;
+                adresee.Kraj = save.Kraj;
+                MessageBox.Show("Zmienianie zostało anulowane. \n\n\n" + "\"" + sqlexception.Message + "\""
+                    + "\n Class: " + sqlexception.Class + "\n State: " + sqlexception.State + "\n Number: " + sqlexception.Number);
             }
             catch (Exception exception)
             {
@@ -224,9 +249,14 @@ namespace AplikacjaHotelowa
             try
             {
                 dc.DeleteAdres(id);
+            }catch(SqlException sqlexception)
+            {
+                MessageBox.Show("Usuwanie zostało anulowane. \n\n\n" + "\"" + sqlexception.Message + "\"" 
+                    + "\n Class: "+ sqlexception.Class +"\n State: "+ sqlexception.State + "\n Number: " + sqlexception.Number);
             }
             catch (Exception exception)
             {
+
                 MessageBox.Show("Usuwanie zostało anulowane. \n\n\n" + "\"" + exception.Message + "\"");
             }
 
@@ -246,6 +276,11 @@ namespace AplikacjaHotelowa
             try
             {
                 dc.SubmitChanges();
+            }
+            catch (SqlException sqlexception)
+            {
+                MessageBox.Show("Usuwanie zostało anulowane. \n\n\n" + "\"" + sqlexception.Message + "\""
+                    + "\n Class: " + sqlexception.Class + "\n State: " + sqlexception.State + "\n Number: " + sqlexception.Number);
             }
             catch (Exception exception)
             {
