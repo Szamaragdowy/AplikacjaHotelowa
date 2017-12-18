@@ -75,16 +75,18 @@
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(370, 186);
+            this.dataGridView1.Size = new System.Drawing.Size(370, 358);
             this.dataGridView1.TabIndex = 1;
             // 
             // Statystyka
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(370, 186);
+            this.AutoScroll = true;
+            this.ClientSize = new System.Drawing.Size(370, 358);
             this.Controls.Add(this.dataGridView1);
             this.Name = "Statystyka";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Statystyka";
             this.Load += new System.EventHandler(this.Form3_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

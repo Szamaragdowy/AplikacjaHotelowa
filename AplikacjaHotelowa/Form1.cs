@@ -84,7 +84,7 @@ namespace AplikacjaHotelowa
             catch (SqlException sqlexception)
             {
                 MessageBox.Show("Dodawanie zostało anulowane. \n\n\n" + "\"" + sqlexception.Message + "\""
-                    + "\n Class: " + sqlexception.Class + "\n State: " + sqlexception.State + "\n Number: " + sqlexception.Number);
+                    + "\n Class: " + sqlexception.Class + "\n Ssttate: " + sqlexception.State + "\n Number: " + sqlexception.Number);
             }
             catch (Exception exception)
             {
@@ -297,6 +297,7 @@ namespace AplikacjaHotelowa
         {
             DataClasses1DataContext dc = new DataClasses1DataContext(con);
             Statystyka form = new Statystyka(from a in dc.GetTable<liczba_budynkow_w_miastach>()select a);
+            form.SetDesktopLocation(this.Location.X + this.Size.Width, this.Location.Y);
             var result = form.ShowDialog();
         }
 
@@ -304,6 +305,7 @@ namespace AplikacjaHotelowa
         {
             DataClasses1DataContext dc = new DataClasses1DataContext(con);
             Statystyka form = new Statystyka(from a in dc.GetTable<liczba_budynkow_w_wojewodztwach>() select a);
+            form.SetDesktopLocation(this.Location.X + this.Size.Width, this.Location.Y);
             var result = form.ShowDialog();
         }
     
