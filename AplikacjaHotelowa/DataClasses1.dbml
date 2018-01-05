@@ -1,50 +1,60 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="AplikacjaHotelowa" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-4B2QABT;Initial Catalog=AplikacjaHotelowa;Integrated Security=True" SettingsObjectName="AplikacjaHotelowa.Properties.Settings" SettingsPropertyName="AplikacjaHotelowaConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.Adresy" Member="Adresies">
-    <Type Name="Adresy">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+  <Table Name="dbo.liczba_adresów_w_miastach" Member="liczba_adresów_w_miastaches">
+    <Type Name="liczba_adresów_w_miastach">
       <Column Name="Miasto" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="Ulica" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="NumerBudynku" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="LiczbaBudynków" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.liczba_adresów_w_wojewodztwach" Member="liczba_adresów_w_wojewodztwaches">
+    <Type Name="liczba_adresów_w_wojewodztwach">
       <Column Name="Województwo" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="Kraj" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Association Name="Adresy_Budynki" Member="Budynkis" ThisKey="Id" OtherKey="Adresy_Id" Type="Budynki" />
+      <Column Name="LiczbaBudynków" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Apartamenty" Member="Apartamenties">
-    <Type Name="Apartamenty">
+  <Table Name="dbo.Liczba_Budynków_w_Województwach" Member="Liczba_Budynków_w_Województwaches">
+    <Type Name="Liczba_Budynków_w_Województwach">
+      <Column Name="Województwo" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="LiczbaBudynków" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Liczba_Budynków_w_Miastach" Member="Liczba_Budynków_w_Miastaches">
+    <Type Name="Liczba_Budynków_w_Miastach">
+      <Column Name="Miasto" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="LiczbaBudynków" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UdogodnieniaLista" Member="UdogodnieniaListas">
+    <Type Name="UdogodnieniaLista">
+      <Column Name="UdogodnieniaId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ApartamentyId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="Udogodnienia_UdogodnieniaLista" Member="Udogodnienia" ThisKey="UdogodnieniaId" OtherKey="Id" Type="Udogodnienia" IsForeignKey="true" />
+      <Association Name="Apartamenty_UdogodnieniaLista" Member="Apartamenty" ThisKey="ApartamentyId" OtherKey="Id" Type="Apartamenty" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Udogodnienia" Member="Udogodnienias">
+    <Type Name="Udogodnienia">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="BudynkiId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="TypId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="NumerPokoju" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Cena" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
-      <Association Name="Apartamenty_Rezerwacja" Member="Rezerwacjas" ThisKey="Id" OtherKey="ApartamentyId" Type="Rezerwacja" />
-      <Association Name="Apartamenty_UdogodnieniaLista" Member="UdogodnieniaListas" ThisKey="Id" OtherKey="ApartamentyId" Type="UdogodnieniaLista" />
-      <Association Name="Budynki_Apartamenty" Member="Budynki" ThisKey="BudynkiId" OtherKey="Id" Type="Budynki" IsForeignKey="true" />
-      <Association Name="Typ_Apartamenty" Member="Typ" ThisKey="TypId" OtherKey="Id" Type="Typ" IsForeignKey="true" />
+      <Column Name="nazwa" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="opis" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="Udogodnienia_UdogodnieniaLista" Member="UdogodnieniaListas" ThisKey="Id" OtherKey="UdogodnieniaId" Type="UdogodnieniaLista" />
     </Type>
   </Table>
-  <Table Name="dbo.Budynki" Member="Budynkis">
-    <Type Name="Budynki">
+  <Table Name="dbo.Typ" Member="Typs">
+    <Type Name="Typ">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Nazwa" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="TelMenadzer" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="TelRecepcja" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Opis" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Adresy_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="Budynki_Apartamenty" Member="Apartamenties" ThisKey="Id" OtherKey="BudynkiId" Type="Apartamenty" />
-      <Association Name="Adresy_Budynki" Member="Adresy" ThisKey="Adresy_Id" OtherKey="Id" Type="Adresy" IsForeignKey="true" />
+      <Association Name="Typ_Apartamenty" Member="Apartamenties" ThisKey="Id" OtherKey="TypId" Type="Apartamenty" />
     </Type>
   </Table>
-  <Table Name="dbo.Osoby" Member="Osobies">
-    <Type Name="Osoby">
+  <Table Name="dbo.StatusZameldowania" Member="StatusZameldowanias">
+    <Type Name="StatusZameldowania">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Imie" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="Nazwisko" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="DataUrodzenia" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="Tel" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Association Name="Osoby_Rezerwacja" Member="Rezerwacjas" ThisKey="Id" OtherKey="OsobyId" Type="Rezerwacja" />
-      <Association Name="Osoby_StatusZameldowania" Member="StatusZameldowanias" ThisKey="Id" OtherKey="OsobyId" Type="StatusZameldowania" />
+      <Column Name="OsobyId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Opis" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Association Name="StatusZameldowania_Rezerwacja" Member="Rezerwacjas" ThisKey="Id" OtherKey="StatusZameldowaniaId" Type="Rezerwacja" />
+      <Association Name="Osoby_StatusZameldowania" Member="Osoby" ThisKey="OsobyId" OtherKey="Id" Type="Osoby" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Rezerwacja" Member="Rezerwacjas">
@@ -56,64 +66,67 @@
       <Column Name="StatusRezerwacji" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
       <Column Name="TerminPrzybycia" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="TerminOdjazdu" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Association Name="Apartamenty_Rezerwacja" Member="Apartamenty" ThisKey="ApartamentyId" OtherKey="Id" Type="Apartamenty" IsForeignKey="true" />
-      <Association Name="Osoby_Rezerwacja" Member="Osoby" ThisKey="OsobyId" OtherKey="Id" Type="Osoby" IsForeignKey="true" />
       <Association Name="StatusZameldowania_Rezerwacja" Member="StatusZameldowania" ThisKey="StatusZameldowaniaId" OtherKey="Id" Type="StatusZameldowania" IsForeignKey="true" />
+      <Association Name="Osoby_Rezerwacja" Member="Osoby" ThisKey="OsobyId" OtherKey="Id" Type="Osoby" IsForeignKey="true" />
+      <Association Name="Apartamenty_Rezerwacja" Member="Apartamenty" ThisKey="ApartamentyId" OtherKey="Id" Type="Apartamenty" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.StatusZameldowania" Member="StatusZameldowanias">
-    <Type Name="StatusZameldowania">
+  <Table Name="dbo.Osoby" Member="Osobies">
+    <Type Name="Osoby">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="opis" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="OsobyId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="StatusZameldowania_Rezerwacja" Member="Rezerwacjas" ThisKey="Id" OtherKey="StatusZameldowaniaId" Type="Rezerwacja" />
-      <Association Name="Osoby_StatusZameldowania" Member="Osoby" ThisKey="OsobyId" OtherKey="Id" Type="Osoby" IsForeignKey="true" />
+      <Column Name="Imie" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Nazwisko" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Tel" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Association Name="Osoby_StatusZameldowania" Member="StatusZameldowanias" ThisKey="Id" OtherKey="OsobyId" Type="StatusZameldowania" />
+      <Association Name="Osoby_Rezerwacja" Member="Rezerwacjas" ThisKey="Id" OtherKey="OsobyId" Type="Rezerwacja" />
     </Type>
   </Table>
-  <Table Name="dbo.Typ" Member="Typs">
-    <Type Name="Typ">
+  <Table Name="dbo.Budynki" Member="Budynkis">
+    <Type Name="Budynki">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Nazwa" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="TelMenadzer" Type="System.String" DbType="NVarChar(9)" CanBeNull="true" />
+      <Column Name="TelRecepcja" Type="System.String" DbType="NVarChar(9)" CanBeNull="true" />
       <Column Name="Opis" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Association Name="Typ_Apartamenty" Member="Apartamenties" ThisKey="Id" OtherKey="TypId" Type="Apartamenty" />
+      <Column Name="Adresy_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Budynki_Apartamenty" Member="Apartamenties" ThisKey="Id" OtherKey="BudynkiId" Type="Apartamenty" />
+      <Association Name="Adresy_Budynki" Member="Adresy" ThisKey="Adresy_Id" OtherKey="Id" Type="Adresy" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Udogodnienia" Member="Udogodnienias">
-    <Type Name="Udogodnienia">
+  <Table Name="dbo.Apartamenty" Member="Apartamenties">
+    <Type Name="Apartamenty">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="nazwa" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="opis" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Association Name="Udogodnienia_UdogodnieniaLista" Member="UdogodnieniaListas" ThisKey="Id" OtherKey="UdogodnieniaId" Type="UdogodnieniaLista" />
+      <Column Name="BudynkiId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TypId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NumerPokoju" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Cena" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Association Name="Apartamenty_UdogodnieniaLista" Member="UdogodnieniaListas" ThisKey="Id" OtherKey="ApartamentyId" Type="UdogodnieniaLista" />
+      <Association Name="Apartamenty_Rezerwacja" Member="Rezerwacjas" ThisKey="Id" OtherKey="ApartamentyId" Type="Rezerwacja" />
+      <Association Name="Budynki_Apartamenty" Member="Budynki" ThisKey="BudynkiId" OtherKey="Id" Type="Budynki" IsForeignKey="true" />
+      <Association Name="Typ_Apartamenty" Member="Typ" ThisKey="TypId" OtherKey="Id" Type="Typ" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.UdogodnieniaLista" Member="UdogodnieniaListas">
-    <Type Name="UdogodnieniaLista">
-      <Column Name="UdogodnieniaId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="ApartamentyId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Association Name="Apartamenty_UdogodnieniaLista" Member="Apartamenty" ThisKey="ApartamentyId" OtherKey="Id" Type="Apartamenty" IsForeignKey="true" />
-      <Association Name="Udogodnienia_UdogodnieniaLista" Member="Udogodnienia" ThisKey="UdogodnieniaId" OtherKey="Id" Type="Udogodnienia" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.liczba_budynkow_w_miastach" Member="liczba_budynkow_w_miastaches">
-    <Type Name="liczba_budynkow_w_miastach">
+  <Table Name="dbo.Adresy" Member="Adresies">
+    <Type Name="Adresy">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Miasto" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="LiczbaBudynków" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.liczba_budynkow_w_wojewodztwach" Member="liczba_budynkow_w_wojewodztwaches">
-    <Type Name="liczba_budynkow_w_wojewodztwach">
+      <Column Name="Ulica" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="NumerBudynku" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
       <Column Name="Województwo" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="LiczbaBudynków" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Kraj" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Association Name="Adresy_Budynki" Member="Budynkis" ThisKey="Id" OtherKey="Adresy_Id" Type="Budynki" />
     </Type>
   </Table>
-  <Function Name="dbo.InsertAdres" Method="InsertAdres">
-    <Parameter Name="Miasto" Parameter="miasto" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="Ulica" Parameter="ulica" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="NumerBudynku" Parameter="numerBudynku" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="Wojewodztwo" Parameter="wojewodztwo" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="Kraj" Parameter="kraj" Type="System.String" DbType="VarChar(50)" />
-    <Return Type="System.Int32" />
-  </Function>
+  <Table Name="dbo.Uzytkownicy" Member="Uzytkownicies">
+    <Type Name="Uzytkownicy">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="login_uzytkownika" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="haslo" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Imie" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Nazwisko" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Uprawnienia" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
   <Function Name="dbo.UpdateAdres" Method="UpdateAdres">
     <Parameter Name="Id" Parameter="id" Type="System.Int32" DbType="Int" />
     <Parameter Name="Miasto" Parameter="miasto" Type="System.String" DbType="VarChar(50)" />
@@ -123,8 +136,71 @@
     <Parameter Name="Kraj" Parameter="kraj" Type="System.String" DbType="VarChar(50)" />
     <Return Type="System.Int32" />
   </Function>
+  <Function Name="dbo.InsertAdres" Method="InsertAdres">
+    <Parameter Name="Miasto" Parameter="miasto" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Ulica" Parameter="ulica" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="NumerBudynku" Parameter="numerBudynku" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Wojewodztwo" Parameter="wojewodztwo" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Kraj" Parameter="kraj" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
   <Function Name="dbo.DeleteAdres" Method="DeleteAdres">
     <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Dodaj_Rezerwacje" Method="Dodaj_Rezerwacje">
+    <Parameter Name="ApartamentID" Parameter="apartamentID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="OsobaID" Parameter="osobaID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="terminPrzybycia" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="terminwyjazdu" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.DostepneWDanymTerminieWBudynku" Method="DostepneWDanymTerminieWBudynku">
+    <Parameter Name="Budynek" Parameter="budynek" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="TerminPrzyjazdu" Parameter="terminPrzyjazdu" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="TerminOdjazdu" Parameter="terminOdjazdu" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="DostepneWDanymTerminieWBudynkuResult">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nazwa" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Cena" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="Opis" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Raport_IloscRezerwacjiWHotelach" Method="Raport_IloscRezerwacjiWHotelach">
+    <ElementType Name="Raport_IloscRezerwacjiWHotelachResult">
+      <Column Name="Nazwa" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="IloscRezerwacji" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Raport_IloscRezerwacjiDanegoTypu" Method="Raport_IloscRezerwacjiDanegoTypu">
+    <ElementType Name="Raport_IloscRezerwacjiDanegoTypuResult">
+      <Column Name="StatusRezerwacji" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="IloscRezerwacji" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Raport_ZyskizApartamentuDanegoTypu" Method="Raport_ZyskizApartamentuDanegoTypu">
+    <ElementType Name="Raport_ZyskizApartamentuDanegoTypuResult">
+      <Column Name="[Typ Apartamentu]" Member="Typ_Apartamentu" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Zysk" Type="System.Decimal" DbType="Decimal(38,0)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Raport_ZyskiWHotelach" Method="Raport_ZyskiWHotelach">
+    <ElementType Name="Raport_ZyskiWHotelachResult">
+      <Column Name="Nazwa" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Zysk" Type="System.Decimal" DbType="Decimal(38,0)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Dodaj_Osobe_returnID" Method="Dodaj_Osobe_returnID">
+    <Parameter Name="imie" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="nazwisko" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="telefon" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.DodajRezerwacjeIOsobe" Method="DodajRezerwacjeIOsobe">
+    <Parameter Name="OsobaID" Parameter="osobaID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ApartamentID" Parameter="apartamentID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="terminPrzybycia" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="terminwyjazdu" Type="System.DateTime" DbType="DateTime" />
     <Return Type="System.Int32" />
   </Function>
 </Database>

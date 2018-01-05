@@ -1,20 +1,33 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2006
+VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AplikacjaHotelowa", "AplikacjaHotelowa\AplikacjaHotelowa.csproj", "{735FEC1A-6C2E-4842-BED1-DDB2C1666D86}"
+EndProject
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "Report Project1", "Report Project1\Report Project1.rptproj", "{B45BCD60-0F2A-4C39-B00D-BD6BE23AE65D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		DebugLocal|Any CPU = DebugLocal|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{735FEC1A-6C2E-4842-BED1-DDB2C1666D86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{735FEC1A-6C2E-4842-BED1-DDB2C1666D86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{735FEC1A-6C2E-4842-BED1-DDB2C1666D86}.DebugLocal|Any CPU.ActiveCfg = Debug|Any CPU
+		{735FEC1A-6C2E-4842-BED1-DDB2C1666D86}.DebugLocal|Any CPU.Build.0 = Debug|Any CPU
 		{735FEC1A-6C2E-4842-BED1-DDB2C1666D86}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{735FEC1A-6C2E-4842-BED1-DDB2C1666D86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B45BCD60-0F2A-4C39-B00D-BD6BE23AE65D}.Debug|Any CPU.ActiveCfg = Debug
+		{B45BCD60-0F2A-4C39-B00D-BD6BE23AE65D}.Debug|Any CPU.Build.0 = Debug
+		{B45BCD60-0F2A-4C39-B00D-BD6BE23AE65D}.Debug|Any CPU.Deploy.0 = Debug
+		{B45BCD60-0F2A-4C39-B00D-BD6BE23AE65D}.DebugLocal|Any CPU.ActiveCfg = DebugLocal
+		{B45BCD60-0F2A-4C39-B00D-BD6BE23AE65D}.DebugLocal|Any CPU.Build.0 = DebugLocal
+		{B45BCD60-0F2A-4C39-B00D-BD6BE23AE65D}.Release|Any CPU.ActiveCfg = Release
+		{B45BCD60-0F2A-4C39-B00D-BD6BE23AE65D}.Release|Any CPU.Build.0 = Release
+		{B45BCD60-0F2A-4C39-B00D-BD6BE23AE65D}.Release|Any CPU.Deploy.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

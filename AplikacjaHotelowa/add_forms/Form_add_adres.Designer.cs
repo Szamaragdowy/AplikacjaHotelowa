@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Ustaw));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.t_Kraj = new System.Windows.Forms.TextBox();
             this.t_Wojewodztwo = new System.Windows.Forms.TextBox();
@@ -181,6 +182,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form_Ustaw";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Dodaj";

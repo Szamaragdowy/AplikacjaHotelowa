@@ -47,16 +47,37 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DnsClient, Version=1.0.7.0, Culture=neutral, PublicKeyToken=4574bb5573c51424, processorArchitecture=MSIL">
+      <HintPath>..\packages\DnsClient.1.0.7\lib\net45\DnsClient.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="MongoDB.Bson, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Bson.2.5.0\lib\net45\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Driver.2.5.0\lib\net45\MongoDB.Driver.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver.Core, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Driver.Core.2.5.0\lib\net45\MongoDB.Driver.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver.Legacy, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\mongocsharpdriver.2.5.0\lib\net45\MongoDB.Driver.Legacy.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.3.0\lib\netstandard1.1\System.Buffers.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.0.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
@@ -70,39 +91,130 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="add_forms\Form_add_Apartament.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="add_forms\Form_add_Apartament.Designer.cs">
+      <DependentUpon>Form_add_Apartament.cs</DependentUpon>
+    </Compile>
+    <Compile Include="add_forms\Form_add_budynek.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="add_forms\Form_add_budynek.Designer.cs">
+      <DependentUpon>Form_add_budynek.cs</DependentUpon>
+    </Compile>
+    <Compile Include="add_forms\Form_add_lista_udogodnien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="add_forms\Form_add_lista_udogodnien.Designer.cs">
+      <DependentUpon>Form_add_lista_udogodnien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="add_forms\Form_add_Rezerwacja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="add_forms\Form_add_Rezerwacja.Designer.cs">
+      <DependentUpon>Form_add_Rezerwacja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="add_forms\Form_add_Typ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="add_forms\Form_add_Typ.Designer.cs">
+      <DependentUpon>Form_add_Typ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="add_forms\Form_add_udogodnienia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="add_forms\Form_add_udogodnienia.Designer.cs">
+      <DependentUpon>Form_add_udogodnienia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Form_LOGIN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form_LOGIN.Designer.cs">
+      <DependentUpon>Form_LOGIN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="add_forms\Form_Zamelduj.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="add_forms\Form_Update_Rezerwacja.Designer.cs">
+      <DependentUpon>Form_Zamelduj.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AplikacjaHotelowaDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AplikacjaHotelowaDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="add_forms\Form_add_osoba.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="add_forms\Form_add_osoba.Designer.cs">
+      <DependentUpon>Form_add_osoba.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataClasses1.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataClasses1.dbml</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="Forms\Form_Main.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Forms\Form_Main.Designer.cs">
+      <DependentUpon>Form_Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form2.cs">
+    <Compile Include="add_forms\Form_add_adres.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form2.Designer.cs">
-      <DependentUpon>Form2.cs</DependentUpon>
+    <Compile Include="add_forms\Form_add_adres.Designer.cs">
+      <DependentUpon>Form_add_adres.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form3.cs">
+    <Compile Include="Forms\Form_Statystyka.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form3.Designer.cs">
-      <DependentUpon>Form3.cs</DependentUpon>
+    <Compile Include="Forms\Form_Statystyka.Designer.cs">
+      <DependentUpon>Form_Statystyka.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MONGO\Akcja.cs" />
+    <Compile Include="MONGO\MongoDB.cs" />
+    <Compile Include="MyListBox.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="add_forms\Form_add_Apartament.resx">
+      <DependentUpon>Form_add_Apartament.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form2.resx">
-      <DependentUpon>Form2.cs</DependentUpon>
+    <EmbeddedResource Include="add_forms\Form_add_budynek.resx">
+      <DependentUpon>Form_add_budynek.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form3.resx">
-      <DependentUpon>Form3.cs</DependentUpon>
+    <EmbeddedResource Include="add_forms\Form_add_lista_udogodnien.resx">
+      <DependentUpon>Form_add_lista_udogodnien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="add_forms\Form_add_osoba.resx">
+      <DependentUpon>Form_add_osoba.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="add_forms\Form_add_Rezerwacja.resx">
+      <DependentUpon>Form_add_Rezerwacja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="add_forms\Form_add_Typ.resx">
+      <DependentUpon>Form_add_Typ.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="add_forms\Form_add_udogodnienia.resx">
+      <DependentUpon>Form_add_udogodnienia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form_LOGIN.resx">
+      <DependentUpon>Form_LOGIN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="add_forms\Form_Update_Rezerwacja.resx">
+      <DependentUpon>Form_Zamelduj.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form_Main.resx">
+      <DependentUpon>Form_Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="add_forms\Form_add_adres.resx">
+      <DependentUpon>Form_add_adres.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form_Statystyka.resx">
+      <DependentUpon>Form_Statystyka.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -113,6 +225,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="AplikacjaHotelowaDataSet.xsc">
+      <DependentUpon>AplikacjaHotelowaDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AplikacjaHotelowaDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>AplikacjaHotelowaDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="AplikacjaHotelowaDataSet.xss">
+      <DependentUpon>AplikacjaHotelowaDataSet.xsd</DependentUpon>
+    </None>
     <None Include="DataClasses1.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>DataClasses1.designer.cs</LastGenOutput>
@@ -154,5 +277,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
